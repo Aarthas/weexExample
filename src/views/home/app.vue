@@ -25,16 +25,25 @@
       }).catch(res => {
         console.log('请求失败~')
       })
+      let globalEvent = weex.requireModule('globalEvent')
+      globalEvent.addEventListener('geolocation', function (e) {
+        console.log('get geolocation')
+        weex.requireModule('myModule').printLog(JSON.stringify(e))
+      })
+
+
+
     },
 
     methods: {
       toDetail(infoUuid) {
-        this.router.push({
-          page: this.routerPage.web,
-          query: {
-            url: `http://www.shuidichou.com/cf/dream/contribute/${infoUuid}`
-          }
+        console.log('toDetail')
+        weex.requireModule('myModule').printLog('我是一个测试!', function (d) {
+          console.log(d)
         })
+
+
+
       }
     }
   }

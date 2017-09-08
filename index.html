@@ -44,7 +44,7 @@
     data: {val: url},
     mounted () {
       let qrcodedraw = new QRCodeLib.QRCodeDraw()
-      qrcodedraw.draw(this.$refs.canvas, this.val, function () {
+      qrcodedraw.draw(this.$refs.canvas, "http://193.0.1.157:8080/dist/weex/views/404/app.js", function () {
       })
     }
   })
