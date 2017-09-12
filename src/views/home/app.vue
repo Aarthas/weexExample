@@ -5,7 +5,7 @@
             <div>
 
                 <!--<banner2 :bannerdata="bannerdata" style="width:100vw;height:400px"></banner2>-->
-                <banner2 :list="bannerdata" ></banner2>
+                <banner :list="bannerdata" ></banner>
                 <menu :list="menudata"> </menu>
 
                 <div v-for="floor in floors">
@@ -36,7 +36,7 @@
 </style>
 
 <script>
-    import banner2 from './component/banner.vue' ;
+    import banner from './component/banner.vue' ;
     import menu from './component/menu.vue' ;
     import fourwhite from './component/fourwhite.vue' ;
     import recommend_cell from './component/recommend_cell.vue' ;
@@ -45,7 +45,7 @@
     var page;
     export default {
         components: {
-            banner2,
+            banner,
             menu,
             fourwhite, recommend_cell
         },

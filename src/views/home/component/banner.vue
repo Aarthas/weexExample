@@ -4,11 +4,10 @@
             <div class="frame" v-for="item in list">
                 <image class="image" resize="cover" :src="item.img" @click="clickItem(item)"></image>
             </div>
-            <!--<indicator class="indicator"></indicator>-->
+            <indicator class="indicator"></indicator>
         </slider>
     </div>
 </template>
-
 
 <script>
     export default {
