@@ -4,7 +4,7 @@
         <YIcon v-model="checked" type="normal"></YIcon>
 
         <div style="width: 640px;height: 220px;border-radius: 15px;">
-            <image style="width: 640px;height: 220px;" src="http://193.0.1.157:9091/coupon2.png" ></image>
+            <image style="width: 640px;height: 220px;" src="http://img.sanjiang.com/image/20179/21/image1505983813262.png" ></image>
             <div style="display: flex;flex-direction: column;position:absolute; top:20px; left:20px;">
                 <div style="display: flex;flex-direction: row;margin-left: 40px;">
                     <div style="display: flex;flex-direction: column;width: 168px;height: 130px;

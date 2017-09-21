@@ -4,7 +4,7 @@
             <div class="frame" v-for="item in list">
                 <image class="image" resize="cover" :src="item.img" @click="clickItem(item)"></image>
             </div>
-            <indicator width="750px" class="indicator"></indicator>
+            <!--<indicator width="750px" class="indicator"></indicator>-->
         </slider>
     </div>
 </template>
@@ -25,7 +25,7 @@
         methods: {
             clickItem (item) {
                 console.log("aaa")
-                weex.requireModule('HomeModule').jtByElement(item);
+                weex.requireModule('route-module').jtByElement(item);
 
             }
         }
@@ -34,12 +34,12 @@
 <style>
     .image {
         width: 750px;
-        height: 380px;
+        height: 270px;
     }
 
     .slider {
         width: 750px;
-        height: 380px;
+        height: 270px;
     }
 
     .indicator {

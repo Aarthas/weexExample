@@ -6,7 +6,6 @@
             <image class="img" style="" :src="item.img"></image>
             <text class="info" style="">{{item.title}}</text>
         </div>
-
     </div>
 
 </template>
@@ -29,7 +28,7 @@
         ,
         methods: {
             clickItem: function (item) {
-                weex.requireModule('HomeModule').jtByElement(item);
+                weex.requireModule('route-module').jtByElement(item);
             }
         }
     }
@@ -41,16 +40,16 @@
     .iconpane {
         display: flex;
         flex-direction: column;
-
-        padding-left: 26px;
-        padding-right: 26px;
+        margin-top: 10px;
+        justify-content: center;
+        width: 150px;
         align-items: center;
 
     }
 
     .img {
-        width: 90px;
-        height: 90px;
+        width: 80px;
+        height: 80px;
 
     }
 
@@ -58,8 +57,8 @@
         text-align: center;
         color: #2F2F2F;
         margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 22px;
+        margin-bottom: 10px;
+        font-size: 24px;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;

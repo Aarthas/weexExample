@@ -28,7 +28,7 @@
         },
         methods: {
             clickicon: function (item) {
-                weex.requireModule('HomeModule').jtByElement(item);
+                weex.requireModule('route-module').jtByElement(item);
             }
         }
     }

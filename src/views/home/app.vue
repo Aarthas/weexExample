@@ -2,7 +2,9 @@
     <div @appear="onappear" @disappear="ondisappear">
         <scroller style="width: 750px;" class="scroller">
 
-            <div>
+            <div style="">
+
+
 
 
                 <div v-for="floor in floors">
@@ -12,13 +14,13 @@
 
                     <image v-if="floor.vt==3" style="height: 220px;" @click="clickItem(floor.data[0])"
                            :src="floor.data[0].img"></image>
-
+                    <notice v-if="floor.vt==3"></notice>
 
                     <fourwhite v-if="floor.vt==5" :data="floor.data"></fourwhite>
 
                     <image v-if="floor.vt==6" style="height: 360px;" @click="clickItem(floor.data[0])"
                            :src="floor.data[0].img"></image>
-                    <horizon-scroll v-if="floor.vt==7" style="width: 750px;height: 360px;"  :itemlist="floor.data"></horizon-scroll>
+                    <horizon-scroll-comp v-if="floor.vt==7" style="width: 750px;height: 360px;"  :itemlist="floor.data"></horizon-scroll-comp>
                 </div>
 
 
@@ -46,8 +48,10 @@
 </style>
 
 <script>
+
     import banner from './component/banner.vue' ;
     import menu from './component/menu.vue' ;
+    import notice from './component/notice.vue' ;
     import fourwhite from './component/fourwhite.vue' ;
     import recommend_cell from './component/recommend_cell.vue' ;
     import api from '../../utils/api' ;
@@ -56,8 +60,10 @@
     var page;
     export default {
         components: {
+
             banner,
             menu,
+            notice,
             fourwhite, recommend_cell
         },
         data () {
@@ -113,7 +119,7 @@
         methods: {
             clickItem (item) {
                 console.log("aaa")
-                weex.requireModule('HomeModule').jtByElement(item);
+                weex.requireModule('route-module').jtByElement(item);
 
             },
             onappear (event) {
