@@ -9,8 +9,7 @@
         <div style="display: flex;flex-direction: row;justify-content: space-around;padding-right: 10px;padding-right: 10px;width: 200px;">
 
             <text style="font-size: 22px;color: #666">￥111</text>
-            <image style="width: 50px;height: 50px;"
-                   src="http://onpxz5rdd.bkt.clouddn.com/ic_put_into_cart.png" @click="action_addToCart"></image>
+            <image style="width: 50px;height: 50px;" src="http://onpxz5rdd.bkt.clouddn.com/ic_put_into_cart.png" @click="action_addToCart"></image>
         </div>
     </div>
 

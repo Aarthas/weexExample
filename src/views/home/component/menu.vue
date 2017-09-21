@@ -11,7 +11,7 @@
 
 </template>
 <script>
-    const storage = weex.requireModule('storage')
+
     export default {
         components: {},
         data () {
@@ -29,14 +29,7 @@
         ,
         methods: {
             clickItem: function (item) {
-                storage.setItem('name', 'Hanks', event => {
-
-                    console.log('set success')
-                })
-                storage.getItem('name', event => {
-                    console.log('get value:', event.data)
-                })
-                weex.requireModule('HomeModule').routeTo(item)
+                weex.requireModule('HomeModule').jtByElement(item);
             }
         }
     }

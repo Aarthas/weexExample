@@ -1,23 +1,14 @@
 <template>
-    <div @appear="onappear" @disappear="ondisappear" style="display: flex;flex-direction: column;align-items: center">
-        <!--<scroller class="scroller">-->
-
-        <div style="background-color: #4e735e;width: 750px;height: 96px;display: flex;flex-direction: row;align-items: center;padding-right: 96px;">
-            <image style="height: 96px;width: 96px;padding: 30px;"
-                   src="http://onpxz5rdd.bkt.clouddn.com/ic_arrow_left_fff.png" @click="onbackpress"></image>
-            <text style="color: white;font-size: 36px;flex: 1;text-align: center">在线留言</text>
-        </div>
+    <div style="display: flex;flex-direction: column;align-items: center">
 
         <text style="font-size: 40px;margin-top: 10px;">安鲜生活</text>
-        <text style="color: #999999;font-size: 26px;margin-top: 10px;">亲爱的家人，我们正式你的</text>
+        <text style="color: #999999;font-size: 26px;margin-top: 10px;line-height: 60px;">亲爱的家人，我们正式你的亲爱的家人，我们正式你的亲爱的家人，我们正式你的亲爱的家人，我们正式你的</text>
 
-        <div style="background-color: #0088fb;width: 750px;height: 300px;">
-            <!--<image style="width:660px; height:750px;"-->
-                   <!--src="https://img.alicdn.com/tps/TB1z.55OFXXXXcLXXXXXXXXXXXX-560-560.jpg"></image>-->
-            <div style=" position:absolute;top:50px;left:10px;">
-                <!--<text style="font-size:50px; color: #ff0000">你好，image</text>-->
-                <input type="text" placeholder="Input Text" style="width: 660px;border-color: transparent;height: 200px; " :autofocus=true value="aa" />
-
+        <div>
+            <image style="width:650px; height:350px;"
+                   src="http://193.0.1.157:9091/coupon2.png"></image>
+            <div style=" position:absolute;top:10px;left:10px;background-color: #afddff">
+                <textarea class="textarea"  style="line-height: 60px;"  value="奥术大师大所大所大所大所大所大所大所大所大所大所大所奥术大师大所大所大所大所大所大所大所大所大所大所大所奥术大师大所大所大所大所大所大所大所大所大所大所大所奥术大师大所大所大所大所大所大所大所大所大所大所大所"    rows="10"  placeholder="sadasd"  @input="oninput"></textarea>
             </div>
         </div>
 
@@ -26,10 +17,6 @@
     </div>
 </template>
 
-
-<style scoped>
-
-</style>
 
 <script>
 
@@ -47,43 +34,43 @@
 
         created(){
 
-            weex.requireModule('LogModule').log("created")
+
         },
 
 
         mounted () {
             page = this;
-            let versionName = weex.requireModule('DeviceModule').getVersionName(function (resp) {
-                page.versionname = resp;
-//                modal.toast({
-//                    message: resp,
-//                    duration: 1
-//                })
-            });
 
 
         },
 
         methods: {
-            onbackpress: function () {
-                weex.requireModule('EventModule').onbackpress();
-            },
-            onappear (event) {
-                console.log('onappear:', event)
+            oninput (event) {
+                console.log('oninput:', event.value)
                 modal.toast({
-                    message: 'onappear',
+                    message: `oninput: ${event.value}`,
                     duration: 0.8
                 })
             },
-            ondisappear (event) {
-                console.log('ondisappear:', event)
-                modal.toast({
-                    message: 'ondisappear',
-                    duration: 0.8
-                })
-            }
-
 
         }
     }
 </script>
+
+<style scoped>
+    .textarea {
+        font-size: 36px;
+        width: 630px;
+        height: 300px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        line-height: 220px;
+
+        color: #666666;
+        border-width: 2px;
+        border-style: solid;
+        border-color: #41B883;
+    }
+</style>

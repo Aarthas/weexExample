@@ -1,8 +1,8 @@
 <template>
 
 
-    <div style="display: flex;flex-wrap: wrap;flex-direction: row;justify-content: space-around;padding-left: 10px;padding-right: 10px;">
-        <div class="iconpane" v-for="item in data.data" @click="clickicon(item)">
+    <div style="display: flex;flex-wrap: nowrap;flex-direction: row;justify-content: space-around;padding-left: 10px;padding-right: 10px;">
+        <div class="iconpane" v-for="item in data" @click="clickicon(item)">
             <image class="img" style="" :src="item.img"></image>
         </div>
 
@@ -19,10 +19,7 @@
         },
         props: {
             data: {
-                type: Object,
-                default () {
-                    return {}
-                }
+
             }
         }
         ,
@@ -31,7 +28,7 @@
         },
         methods: {
             clickicon: function (item) {
-
+                weex.requireModule('HomeModule').jtByElement(item);
             }
         }
     }
@@ -40,30 +37,12 @@
 <style scoped>
 
 
-    .iconpane {
-        display: flex;
-        flex-direction: column;
-
-        margin-bottom: 10px;
-        align-items: center;
-
-    }
 
     .img {
-        width: 350px;
-        height: 175px;
-
+        width: 175px;
+        height: 385px;
+        flex: 1;
     }
 
-    .info {
-        text-align: center;
-        color: #2F2F2F;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 22px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
 
-    }
 </style>

@@ -1,10 +1,10 @@
 <template>
     <div>
-        <slider class="slider" interval="3000" auto-play=true  >
+        <slider class="slider" interval="4500" auto-play=true  >
             <div class="frame" v-for="item in list">
                 <image class="image" resize="cover" :src="item.img" @click="clickItem(item)"></image>
             </div>
-            <indicator class="indicator"></indicator>
+            <indicator width="750px" class="indicator"></indicator>
         </slider>
     </div>
 </template>
@@ -25,8 +25,7 @@
         methods: {
             clickItem (item) {
                 console.log("aaa")
-//                console.log(item)
-                weex.requireModule('HomeModule').routeTo(item)
+                weex.requireModule('HomeModule').jtByElement(item);
 
             }
         }
@@ -35,17 +34,17 @@
 <style>
     .image {
         width: 750px;
-        height: 420px;
+        height: 380px;
     }
 
     .slider {
         width: 750px;
-        height: 420px;
+        height: 380px;
     }
 
     .indicator {
-
         height: 30px;
+        width: 750px;
         display: flex;
         justify-content: center;
         item-color: #d0cdd1;
@@ -53,6 +52,5 @@
         item-size: 14px;
         position: absolute;
         bottom: 10px;
-
     }
 </style>y
