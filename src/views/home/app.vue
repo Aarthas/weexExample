@@ -1,11 +1,11 @@
 <template>
-    <div @appear="onappear" @disappear="ondisappear">
+    <div
+
+    >
+        <!--@viewappear="viewappear" @viewdisappear="viewdisappear"-->
         <scroller style="width: 750px;" class="scroller">
 
             <div style="">
-
-
-
 
                 <div v-for="floor in floors">
                     <!--<div>aa</div>-->
@@ -14,7 +14,7 @@
 
                     <image v-if="floor.vt==3" style="height: 220px;" @click="clickItem(floor.data[0])"
                            :src="floor.data[0].img"></image>
-                    <notice v-if="floor.vt==3"></notice>
+                    <notice :data="words" v-if="floor.vt==3" ></notice>
 
                     <fourwhite v-if="floor.vt==5" :data="floor.data"></fourwhite>
 
@@ -70,30 +70,26 @@
             return {
                 malldata: null,
 
-                floors: []
+                floors: [],
+                words:[]
             }
         },
         computed: {
-//            item: function () {
-//                if (malldata) {
-//                    return page.malldata.floors[2].data[1]
-//                }
-//                return {};
-//            }
+
         },
 
         created(){
-//            weex.requireModule('LogModule').log("created")
+
         },
 
 
         mounted () {
 
-//            weex.requireModule('LogModule').log("mounted")
             console.log("aaa")
             page = this;
 
             api.api({
+//                loading:{},
                 url: 'home/index',
                 success: function (basebean) {
                     let mallData = basebean.getData();
@@ -102,18 +98,23 @@
                     console.log(page.floors)
 
                 }
+            });
+
+
+            api.api({
+                url: 'search/hotwords',
+                success: function (basebean) {
+
+                    let data2 = basebean.getData();
+                    var result = data2.map(function (item) {
+                        return item .keyword;
+                    });
+
+                    page.words = result;
+                    console.log(page.words)
+                }
             })
-//            stream.fetch({
-//                method: 'GET',
-//                type: 'json',
-//                url: 'http://app.sanjiang.com/home/index'
-//            }, function (resp) {
-//                console.log(resp.data.data.head)
-//
-//                console.log(page.malldata.floors[1])
-//
-//
-//            })
+
         },
 
         methods: {
@@ -122,17 +123,17 @@
                 weex.requireModule('route-module').jtByElement(item);
 
             },
-            onappear (event) {
+            viewappear (event) {
                 console.log('onappear:', event)
                 modal.toast({
-                    message: 'onappear',
+                    message: 'viewappear',
                     duration: 0.8
                 })
             },
-            ondisappear (event) {
+            viewdisappear (event) {
                 console.log('ondisappear:', event)
                 modal.toast({
-                    message: 'ondisappear',
+                    message: 'viewdisappear',
                     duration: 0.8
                 })
             }

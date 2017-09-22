@@ -11,13 +11,23 @@ const storage = weex.requireModule('storage')
 // http base url
 // const baseUrl = 'http://app.sanjiang.com/'
 const baseUrl = 'http://193.0.1.157:20000/'
+var debug = true;
+function apiauth(opt) {
+    // opt.token="ece87dcd-8fcf-4cd6-ba59-9a864cd244f2";
 
-function getWithAuth(url, params) {
+    if (debug)
+    {
+        opt.token="ece87dcd-8fcf-4cd6-ba59-9a864cd244f2";
+        api(opt)
+    }else {
+        var userModule = weex.requireModule('UserModule')
+        userModule.getToken(function (token) {
+            // opt.token="ece87dcd-8fcf-4cd6-ba59-9a864cd244f2";
+            opt.token=token;
+            api(opt)
+        })
+    }
 
-    var userModule = weex.requireModule('UserModule')
-    userModule.getToken(function (token) {
-        get(url, params, token)
-    })
 
 
 }
@@ -26,7 +36,7 @@ function api(opt) {
 
     // console.log('request:', `${baseUrl + url}?${qs.stringify(params)}`)
     console.log("api start")
-    opt.params={"a":1}
+
     console.log(opt.params)
 
     let  url='';
@@ -40,6 +50,12 @@ function api(opt) {
     }
     console.log(url)
     console.log(opt.params)
+    if (opt.loading != null)
+    {
+        weex.requireModule('event-module').showLoading();
+    }
+
+    // weex.requireModule('log-module').log("log1");
     stream.fetch({
         method: opt.method || 'GET',
         url: url,
@@ -57,8 +73,8 @@ function api(opt) {
                 opt.success(basebean);
 
             } else {
-                if (opts.onerrcode) {
-                    opts.onerrcode(basebean);
+                if (opt.onerrcode) {
+                    opt.onerrcode(basebean);
                 }
             }
 
@@ -71,6 +87,11 @@ function api(opt) {
             }
 
         }
+        if (opt.loading != null)
+        {
+            weex.requireModule('event-module').hideLoading();
+        }
+
     })
 
 }
@@ -170,5 +191,5 @@ function put(url, body) {
 }
 
 export default {
-    get, post, del, put,api
+    get, post, del, put,api,apiauth
 }

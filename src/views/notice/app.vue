@@ -1,13 +1,13 @@
 <template>
-    <div @appear="onappear" @disappear="ondisappear"
+    <div
          style="background-color: #f6f6f6;display: flex;flex-direction: column;align-items: center">
 
         <titlebar title="公告详情"></titlebar>
 
 
         <list class="list">
-            <cell  v-for="item in couponData">
-                <notice_item ></notice_item>
+            <cell  v-for="item in list">
+                <notice_item :item="item"></notice_item>
             </cell>
         </list>
 
@@ -34,7 +34,7 @@
         },
         data () {
             return {
-                couponData: []
+                list: []
             }
         },
         computed: {},
@@ -49,30 +49,24 @@
 
 //            console.log("aaa")
             page = this;
-            api.get("address").then(function (resp) {
-                page.couponData = resp.data;
-                console.log( page.couponData)
-            }).catch(function (err) {
+            api.api({
+                url: 'search/hotwords',
+                success: function (basebean) {
 
+                    let data2 = basebean.getData();
+
+
+                    page.list = data2;
+
+                }
             })
+
+
+
 
         },
 
         methods: {
-            onappear (event) {
-                console.log('onappear:', event)
-                modal.toast({
-                    message: 'onappear',
-                    duration: 0.8
-                })
-            },
-            ondisappear (event) {
-                console.log('ondisappear:', event)
-                modal.toast({
-                    message: 'ondisappear',
-                    duration: 0.8
-                })
-            }
 
 
         }
