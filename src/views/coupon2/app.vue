@@ -6,8 +6,8 @@
 
         <!--<y-icon style="line-height: 100px;" v-model="checked" :type="cellItem.stockState ==1?'default':'cancel'"></y-icon>-->
         <list class="list">
-            <cell  v-for="item in couponData">
-                <coupon_item ></coupon_item>
+            <cell  v-for="item in list">
+                <coupon_item style="margin-top: 10px;margin-bottom: 10px;"></coupon_item>
             </cell>
         </list>
         <!--<div style="height: 30px;"></div>-->
@@ -43,7 +43,7 @@
         data () {
             return {
 
-                couponData: []
+                list: []
             }
         },
         computed: {},
@@ -58,12 +58,16 @@
 
 //            console.log("aaa")
             page = this;
-            api.get("address").then(function (resp) {
-                page.couponData = resp.data;
+            api.api({
+                url: 'search/hotwords',
+                success: function (basebean) {
 
-                console.log( page.couponData)
-            }).catch(function (err) {
+                    let data2 = basebean.getData();
 
+
+                    page.list = data2;
+
+                }
             })
 
         },

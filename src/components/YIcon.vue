@@ -1,11 +1,11 @@
 <template>
-    <div @click="updateValue">
+    <div >
         <!--<i class="weui-icon-success" v-show="type == 'default' && value"></i>-->
         <!--<i class="weui-icon-circle" v-show="type == 'default' && !value"></i>-->
         <!--<i class="weui-icon-cancel" v-show="type == 'cancel'"></i>-->
-        <image class="icon" src="http://onpxz5rdd.bkt.clouddn.com/ic_checked.png" resize="contain" v-if="type == 'normal' && value"></image>
-        <image class="icon" src="http://onpxz5rdd.bkt.clouddn.com/ic_unchecked.png" resize="contain" v-if="type == 'normal' && !value"></image>
-        <image class="icon" src="http://onpxz5rdd.bkt.clouddn.com/ic_check_unable.png" resize="contain" v-if="type == 'cancel'"></image>
+        <image class="icon" src="http://img.sanjiang.com/image/20179/23/image1506152902307.png" resize="contain" v-if="type == 'normal' && currentValue"></image>
+        <image class="icon" src="http://img.sanjiang.com/image/20179/23/image1506152926019.png" resize="contain" v-if="type == 'normal' && !currentValue"></image>
+        <!--<image class="icon" src="http://onpxz5rdd.bkt.clouddn.com/ic_check_unable.png" resize="contain" v-if="type == 'cancel'"></image>-->
 
 
 
@@ -18,13 +18,17 @@
     export default {
 
         components: {},
-        methods: {
-            updateValue () {
-                this.$emit('update:value', !this.value)
-            }
+        data () {
+            return {
+                currentValue: ''
+            };
         },
         props: {
             value: {
+                type: Boolean,
+                default: false
+            },
+            aa: {
                 type: Boolean,
                 default: false
             },
@@ -32,12 +36,31 @@
                 type: String,
                 default: 'normal'
             }
-        }
+        },
+        watch: {
+            aa (newVal) {
+                this.currentValue = this.aa
+                console.log("watch a")
+//                this.$emit('on-change', this.currentValue)
+            }
+        },
+        created:function () {
+            console.log("created")
+            console.log("created s"+this.aa)
+            this.currentValue = this.aa
+        },
+
+        methods: {
+            updateValue () {
+                this.$emit('update:value', !this.value)
+            }
+        },
+
     }
 </script>
 
 <style scoped>
     .icon {
-        width:80px;height: 220px;padding-left: 20px;padding-right:20px;
+        width:80px;height: 80px;padding-left: 20px;padding-right:20px;
     }
 </style>
