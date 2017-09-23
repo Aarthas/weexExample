@@ -2,7 +2,7 @@
     <div style="display: flex;flex-direction: row;align-items: center">
 
         <div style="background-color: #afddff" @click="doSelect()">
-            <YIcon :aa="checked" type="normal"></YIcon>
+            <YIcon :checked="checked" type="normal"></YIcon>
         </div>
         <div style="width: 640px;height: 220px;border-radius: 15px;" @click="doSelect()">
             <image style="width: 640px;height: 220px;"

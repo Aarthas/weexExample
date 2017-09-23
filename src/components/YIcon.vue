@@ -24,11 +24,7 @@
             };
         },
         props: {
-            value: {
-                type: Boolean,
-                default: false
-            },
-            aa: {
+            checked: {
                 type: Boolean,
                 default: false
             },
@@ -38,22 +34,18 @@
             }
         },
         watch: {
-            aa (newVal) {
-                this.currentValue = this.aa
-                console.log("watch a")
-//                this.$emit('on-change', this.currentValue)
+            checked (newVal) {
+                this.currentValue = this.checked
             }
         },
         created:function () {
-            console.log("created")
-            console.log("created s"+this.aa)
             this.currentValue = this.aa
         },
 
         methods: {
-            updateValue () {
-                this.$emit('update:value', !this.value)
-            }
+//            updateValue () {
+//                this.$emit('update:value', !this.value)
+//            }
         },
 
     }
