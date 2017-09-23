@@ -68,6 +68,7 @@ export default {
         }
         ,
         doSelect(){
+
                 console.log("doSelect")
                 this.checked = !this.checked;
                 console.log("doSelect"+this.checked)
@@ -80,26 +81,5 @@ export default {
 }
 </script>
 <style>
-    .image {
-        width: 750px;
-        height: 420px;
-    }
 
-    .slider {
-        width: 750px;
-        height: 420px;
-    }
-
-    .indicator {
-
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        item-color: #d0cdd1;
-        item-selected-color: #04be02;
-        item-size: 14px;
-        position: absolute;
-        bottom: 10px;
-
-    }
 </style>y
