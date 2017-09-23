@@ -85,7 +85,7 @@
 
             let aa = this.$getConfig().aa;
             modal.toast({
-                message: aa,
+                message: "asd"+aa,
                 duration: 0.8
             })
             loaddata();
@@ -100,11 +100,11 @@
                 nlib.router.addaddress();
             },
             viewappear (event) {
-                console.log('onappear:', event)
-                modal.toast({
-                    message: 'onappear',
-                    duration: 0.8
-                })
+//                console.log('onappear:', event)
+//                modal.toast({
+//                    message: 'onappear',
+//                    duration: 0.8
+//                })
                 loaddata();
             },
             viewdisappear (event) {

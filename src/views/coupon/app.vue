@@ -1,22 +1,19 @@
 <template>
-    <div @appear="onappear" @disappear="ondisappear"
-         style="background-color: #f6f6f6;display: flex;flex-direction: column;align-items: center">
+    <div
+            style="background-color: #f6f6f6;display: flex;flex-direction: column;align-items: center">
         <!--<scroller class="scroller">-->
         <titlebar title="我的优惠券"></titlebar>
         <!--<coupon_item ></coupon_item>-->
-        <list class="list">
-            <cell  v-for="item in couponData">
-                <coupon_item ></coupon_item>
-            </cell>
-        </list>
-        <!--<div style="height: 30px;"></div>-->
-        <!--<div v-for="item in couponData" :item="item">-->
-           <!---->
-        <!--</div>-->
 
+        <scroller>
+            <div style="width: 750px;justify-content: center;align-items: center">
 
-
-        <!--</scroller>-->
+                <!--<div style="height:40px;width: 10px;"></div>-->
+                <div v-for="item in list">
+                    <coupon_item style="margin-top: 10px;margin-bottom: 10px;"></coupon_item>
+                </div>
+            </div>
+        </scroller>
     </div>
 </template>
 
@@ -39,7 +36,7 @@
         },
         data () {
             return {
-                couponData: []
+                list: []
             }
         },
         computed: {},
@@ -51,15 +48,17 @@
 
         mounted () {
 
-
-//            console.log("aaa")
             page = this;
-            api.get("address").then(function (resp) {
-                page.couponData = resp.data;
+            api.api({
+                url: 'search/hotwords',
+                success: function (basebean) {
 
-                console.log( page.couponData)
-            }).catch(function (err) {
+                    let data2 = basebean.getData();
 
+
+                    page.list = data2;
+
+                }
             })
 
         },
