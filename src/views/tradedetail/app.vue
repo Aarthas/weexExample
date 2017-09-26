@@ -7,34 +7,24 @@
 
             <div style="">
 
-                <div v-for="floor in floors">
-                    <!--<div>aa</div>-->
-                    <banner v-if="floor.vt==1" :list="floor.data"></banner>
-                    <menu v-if="floor.vt==2" :list="floor.data"></menu>
+                <!--<div v-for="floor in floors">-->
+                    <!--&lt;!&ndash;<div>aa</div>&ndash;&gt;-->
+                    <!--<banner v-if="floor.vt==1" :list="floor.data"></banner>-->
+                    <!--<menu v-if="floor.vt==2" :list="floor.data"></menu>-->
 
-                    <image v-if="floor.vt==3" style="height: 220px;" @click="clickItem(floor.data[0])"
-                           :src="floor.data[0].img"></image>
-                    <notice :data="words" v-if="floor.vt==3" ></notice>
+                    <!--<image v-if="floor.vt==3" style="height: 220px;" @click="clickItem(floor.data[0])"-->
+                           <!--:src="floor.data[0].img"></image>-->
+                    <!--<notice :data="words" v-if="floor.vt==3" ></notice>-->
 
-                    <fourwhite v-if="floor.vt==5" :data="floor.data"></fourwhite>
+                    <!--<fourwhite v-if="floor.vt==5" :data="floor.data"></fourwhite>-->
 
-                    <image v-if="floor.vt==6" style="height: 360px;" @click="clickItem(floor.data[0])"
-                           :src="floor.data[0].img"></image>
-                    <horizon-scroll-comp v-if="floor.vt==7" style="width: 750px;height: 360px;"  :itemlist="floor.data"></horizon-scroll-comp>
-                </div>
-
-
-                                <!--<image style="height: 300px;"-->
-                <!--src="https://m.360buyimg.com/babel/s746x376_jfs/t8731/137/890745710/126735/d04e7518/59b0b878N53711567.jpg!q50.jpg.webp"></image>-->
-
-                <!--<div style="display: flex;flex-wrap: wrap;flex-direction: row;justify-content: space-around;padding-left: 10px;padding-right: 10px;">-->
-                <!--<recommend_cell></recommend_cell>-->
-                <!--<recommend_cell></recommend_cell>-->
-                <!--<recommend_cell></recommend_cell>-->
-                <!--<recommend_cell></recommend_cell>-->
-                <!--<recommend_cell></recommend_cell>-->
-                <!--<recommend_cell></recommend_cell>-->
+                    <!--<image v-if="floor.vt==6" style="height: 360px;" @click="clickItem(floor.data[0])"-->
+                           <!--:src="floor.data[0].img"></image>-->
+                    <!--<horizon-scroll-comp v-if="floor.vt==7" style="width: 750px;height: 360px;"  :itemlist="floor.data"></horizon-scroll-comp>-->
                 <!--</div>-->
+
+
+
 
 
             </div>
@@ -89,8 +79,8 @@
             page = this;
 
             api.api({
-                loading:{},
-                url: 'home/index',
+//                loading:{},
+                url: 'orders/index',
                 success: function (basebean) {
                     let mallData = basebean.getData();
                     page.malldata = mallData;

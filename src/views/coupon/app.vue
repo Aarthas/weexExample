@@ -10,7 +10,7 @@
 
                 <!--<div style="height:40px;width: 10px;"></div>-->
                 <div v-for="item in list">
-                    <coupon_item style="margin-top: 10px;margin-bottom: 10px;"></coupon_item>
+                    <coupon_item style="margin-top: 10px;margin-bottom: 10px;"  :item="item"></coupon_item>
                 </div>
             </div>
         </scroller>
@@ -39,7 +39,7 @@
                 list: []
             }
         },
-        computed: {},
+
 
         created(){
 
@@ -50,13 +50,16 @@
 
             page = this;
             api.api({
-                url: 'search/hotwords',
+                page:this,
+                url: 'coupons',
+//                url: 'search/hotwords',
                 success: function (basebean) {
 
                     let data2 = basebean.getData();
 
 
-                    page.list = data2;
+
+                    page.list = data2.list;
 
                 }
             })
@@ -65,11 +68,11 @@
 
         methods: {
             onappear (event) {
-                console.log('onappear:', event)
-                modal.toast({
-                    message: 'onappear',
-                    duration: 0.8
-                })
+//                console.log('onappear:', event)
+//                modal.toast({
+//                    message: 'onappear',
+//                    duration: 0.8
+//                })
             },
             ondisappear (event) {
                 console.log('ondisappear:', event)

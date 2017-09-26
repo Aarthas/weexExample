@@ -39,6 +39,11 @@ function api(opt) {
 
     console.log(opt.params)
 
+    if (opt.page)
+    {
+        opt.token= weex.config.token
+        // opt.token = opt.page.$getConfig().token;
+    }
     let  url='';
     if (opt.params)
     {
@@ -55,6 +60,7 @@ function api(opt) {
         weex.requireModule('event-module').showLoading();
     }
 
+    opt.token="2dedd967-5745-421d-a93b-7b7448511dea"
     // weex.requireModule('log-module').log("log1");
     stream.fetch({
         method: opt.method || 'GET',
@@ -80,8 +86,8 @@ function api(opt) {
 
         } else if (res.status == 401) {
 
-            if (opts.forunlogin) {
-                opts.forunlogin();
+            if (opt.forunlogin) {
+                opt.forunlogin();
             } else {
 
             }
