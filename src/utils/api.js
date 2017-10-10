@@ -105,7 +105,10 @@ function api(opt) {
 
         }
         if (opt.loading != null) {
-            weex.requireModule('event-module').hideLoading();
+            if (weex.config.env.platform != 'Web') {
+                weex.requireModule('event-module').hideLoading();
+            }
+
         }
 
     })

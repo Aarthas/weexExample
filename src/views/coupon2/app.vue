@@ -111,6 +111,7 @@
             },
             usecoupon(){
                 nlib.event.usecoupon();
+                nlib.router.naviback()
             },
             onappear (event) {
                 console.log('onappear:', event)
