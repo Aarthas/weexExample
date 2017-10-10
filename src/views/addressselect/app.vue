@@ -32,21 +32,18 @@
                     </div>
 
                     <div>
-                        <div v-if="deliver==null||deliver.length == 0"
+                        <div v-if="delivers==null||delivers.length == 0"
                              style="background-color: white;width: 750px;align-items: center" @click="jt_addaddress">
                             <text style="font-size: 30px;color: #666666;line-height: 150px;">点击添加收货地址+</text>
                         </div>
                         <div v-else>
-                            <address_item v-for="item in deliver" :item="item" :key="item.id"></address_item>
+                            <address_item v-for="item in delivers" :item="item" :key="item.id"></address_item>
                         </div>
                     </div>
 
 
                 </div>
 
-                <!--<div v-if="isAddressEmpty">-->
-                <!--<text style="font-size: 30px;color: #4f7560">列表为空</text>-->
-                <!--</div>-->
 
             </div>
         </scroller>
@@ -70,7 +67,7 @@
         data () {
             return {
                 selfpick: null,
-                deliver: [],
+                delivers: [],
                 isAddressEmpty: false
             }
         },
@@ -119,15 +116,17 @@
         }
     }
     function loaddata() {
-        api.apiauth({
+        api.api({
 
-            url: 'address/allAddress',
+            page:page,
+            loading:{},
+            url: 'address/getAllAddress',
             success: function (basebean) {
                 let data = basebean.getData();
                 page.selfpick = data.selfpick;
-                page.deliver = data.deliver;
+                page.delivers = data.delivers;
 //                    page.deliver=null;
-                if (page.selfpick == null && page.deliver == null && page.deliver.length == 0) {
+                if (page.selfpick == null && page.delivers == null && page.delivers.length == 0) {
                     page.isAddressEmpty = true;
                 } else {
                     page.isAddressEmpty = false;

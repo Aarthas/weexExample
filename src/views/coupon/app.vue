@@ -27,7 +27,7 @@
     import api from '../../utils/api' ;
     import titlebar from '../../components/titlebar.vue' ;
     const modal = weex.requireModule('modal')
-
+    import nlib from '../../utils/nlib' ;
     var page;
     export default {
         components: {
@@ -57,7 +57,7 @@
 
                     let data2 = basebean.getData();
 
-
+                    nlib.log.log(data2.list);
 
                     page.list = data2.list;
 

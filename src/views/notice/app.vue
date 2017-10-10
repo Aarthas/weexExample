@@ -50,10 +50,10 @@
 //            console.log("aaa")
             page = this;
             api.api({
-                url: 'search/hotwords',
+                url: 'article/list',
                 success: function (basebean) {
 
-                    let data2 = basebean.getData();
+                    let data2 = basebean.getData().list;
 
 
                     page.list = data2;

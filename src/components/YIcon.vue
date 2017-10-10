@@ -35,11 +35,12 @@
         },
         watch: {
             checked (newVal) {
+
                 this.currentValue = this.checked
             }
         },
         created:function () {
-            this.currentValue = this.aa
+            this.currentValue = this.checked
         },
 
         methods: {

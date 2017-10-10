@@ -6,31 +6,32 @@
 import BaseBean from "./BaseBean.js";
 import qs from "qs";
 import {urlEncode} from "utils/string";
+import nlib from "./nlib";
 let stream = weex.requireModule('stream')
-const storage = weex.requireModule('storage')
+const modal = weex.requireModule('modal')
 // http base url
-// const baseUrl = 'http://app.sanjiang.com/'
+// const baseUrl = 'http://srv0.sanjiang.info:20000/'
 const baseUrl = 'http://193.0.1.157:20000/'
 var debug = true;
-function apiauth(opt) {
-    // opt.token="ece87dcd-8fcf-4cd6-ba59-9a864cd244f2";
-
-    if (debug)
-    {
-        opt.token="ece87dcd-8fcf-4cd6-ba59-9a864cd244f2";
-        api(opt)
-    }else {
-        var userModule = weex.requireModule('UserModule')
-        userModule.getToken(function (token) {
-            // opt.token="ece87dcd-8fcf-4cd6-ba59-9a864cd244f2";
-            opt.token=token;
-            api(opt)
-        })
-    }
-
-
-
-}
+// function apiauth(opt) {
+//     // opt.token="ece87dcd-8fcf-4cd6-ba59-9a864cd244f2";
+//
+//     if (debug)
+//     {
+//         opt.token="ece87dcd-8fcf-4cd6-ba59-9a864cd244f2";
+//         api(opt)
+//     }else {
+//         var userModule = weex.requireModule('UserModule')
+//         userModule.getToken(function (token) {
+//             // opt.token="ece87dcd-8fcf-4cd6-ba59-9a864cd244f2";
+//             opt.token=token;
+//             api(opt)
+//         })
+//     }
+//
+//
+//
+// }
 function api(opt) {
 
 
@@ -39,43 +40,53 @@ function api(opt) {
 
     console.log(opt.params)
 
-    if (opt.page)
-    {
-        opt.token= weex.config.token
-        // opt.token = opt.page.$getConfig().token;
-    }
-    let  url='';
-    if (opt.params)
-    {
-        console.log("1")
-        url = baseUrl + opt.url+'?'+qs.stringify(opt.params);
-    }else {
-        console.log("2")
+
+    opt.token = weex.config.token
+    opt.token = "84d23e89-9702-4e99-a4a8-44d2db9dffeb"
+    // modal.toast({
+    //     message: 'opt.token' + opt.token,
+    //     duration: 0.8
+    // })
+
+    let url = '';
+    if (opt.params) {
+        url = baseUrl + opt.url + '?' + qs.stringify(opt.params);
+    } else {
         url = baseUrl + opt.url;
     }
     console.log(url)
     console.log(opt.params)
-    if (opt.loading != null)
-    {
-        weex.requireModule('event-module').showLoading();
+    console.log(opt.params)
+    if (opt.loading != null) {
+        if (weex.config.env.platform != 'Web') {
+            weex.requireModule('event-module').showLoading();
+        }
     }
 
-    opt.token="2dedd967-5745-421d-a93b-7b7448511dea"
-    // weex.requireModule('log-module').log("log1");
+
     stream.fetch({
         method: opt.method || 'GET',
         url: url,
+        body:JSON.stringify(opt.body),
         headers: {
             'x-auth-token': opt.token,
-            terminal: '60'
+            terminal: '60',
+            // shopid: weex.config.shopid
+            shopid: '00530'
         },
         type: 'json'
     }, function (res) {
+        console.log("aa")
+        console.log(weex.config.env.platform != 'Web')
+        if (weex.config.env.platform != 'Web') {
+            nlib.log.log(res)
+        }
 
         console.log(res)
         if (res.ok) {
+            var basebean = new BaseBean(res);
             if (res.data && res.data.code == 1) {
-                var basebean = new BaseBean(res);
+
                 opt.success(basebean);
 
             } else {
@@ -93,8 +104,7 @@ function api(opt) {
             }
 
         }
-        if (opt.loading != null)
-        {
+        if (opt.loading != null) {
             weex.requireModule('event-module').hideLoading();
         }
 
@@ -197,5 +207,5 @@ function put(url, body) {
 }
 
 export default {
-    get, post, del, put,api,apiauth
+    get, post, del, put, api
 }

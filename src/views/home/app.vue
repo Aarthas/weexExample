@@ -55,6 +55,7 @@
     import fourwhite from './component/fourwhite.vue' ;
     import recommend_cell from './component/recommend_cell.vue' ;
     import api from '../../utils/api' ;
+    import nlib from '../../utils/nlib' ;
     const modal = weex.requireModule('modal')
 
     var page;
@@ -102,12 +103,12 @@
 
 
             api.api({
-                url: 'search/hotwords',
+                url: 'article/list',
                 success: function (basebean) {
 
-                    let data2 = basebean.getData();
+                    let data2 = basebean.getData().list;
                     var result = data2.map(function (item) {
-                        return item .keyword;
+                        return item .name;
                     });
 
                     page.words = result;
@@ -119,23 +120,23 @@
 
         methods: {
             clickItem (item) {
-                console.log("aaa")
-                weex.requireModule('route-module').jtByElement(item);
+
+                nlib.router.jtByElement(item);
 
             },
             viewappear (event) {
-                console.log('onappear:', event)
-                modal.toast({
-                    message: 'viewappear',
-                    duration: 0.8
-                })
+//                console.log('onappear:', event)
+//                modal.toast({
+//                    message: 'viewappear',
+//                    duration: 0.8
+//                })
             },
             viewdisappear (event) {
-                console.log('ondisappear:', event)
-                modal.toast({
-                    message: 'viewdisappear',
-                    duration: 0.8
-                })
+//                console.log('ondisappear:', event)
+//                modal.toast({
+//                    message: 'viewdisappear',
+//                    duration: 0.8
+//                })
             }
 
 

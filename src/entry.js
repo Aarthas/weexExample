@@ -4,8 +4,8 @@
  * @description 程序入口启动配置
  */
 
-import App from './views/coupon/app.vue'
-import router from 'router'
+import App from './views/coupon2/app.vue'
+
 import VueProgressBar from 'vue-progressbar'
 
 // 全局注册组件
@@ -36,7 +36,6 @@ Vue.use(VueProgressBar, {
 
 new Vue({
   el: '#root',
-  router,
   template: '<App/>',
   components: {
     App

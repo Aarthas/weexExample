@@ -1,9 +1,9 @@
 <template>
   <div>
     <osc-list class="list" ref='list' @refresh="onRefresh" @loading="onLoading">
-      <cell class="row" v-for="(i, row) in rows" :index="i">
+      <cell class="row" v-for="(i, row) in rows" :index="row">
         <div class="item">
-          <text class="item-title">row {{row.id}}</text>
+          <text class="item-title">row {{i.id}}a{{row}}</text>
         </div>
       </cell>
     </osc-list>

@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div style="border-top-style:solid;border-top-width:1px;border-top-color:#d1d1d1;width: 660px;">
-                <text style="color: #666666;font-size: 20px;line-height: 50px;">所有门店全场商品通用</text>
+                <text style="color: #666666;font-size: 20px;line-height: 50px;">{{item.sceneMemo}}</text>
             </div>
         </div>
 

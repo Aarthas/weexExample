@@ -1,7 +1,7 @@
 <template>
     <div style="background-color: white;padding:28px;margin-top: 20px;width: 750px;">
-        <text style="color: #b0b0b0;font-size: 32px;margin-bottom: 16px;" >发布日期：2017-04-19 13:18:49</text>
-        <text style="color: #333333;font-size: 32px;">{{item.keyword}}</text>
+        <text style="color: #b0b0b0;font-size: 32px;margin-bottom: 16px;" >发布日期：{{item.publishTime}}</text>
+        <text style="color: #333333;font-size: 32px;">{{item.name}}</text>
     </div>
 </template>
 
