@@ -8,15 +8,17 @@
     justify-content: flex-start;padding-top: 10px;
     ">
                     <div style="display: flex;flex-direction: row;align-items: flex-end">
-                        <text style="color: red;font-size: 36px;margin-bottom: 10px;">¥</text>
-                        <text style="color: red;font-size: 72px;">{{item.reduceMoney}}</text>
+                        <text style="font-size: 36px;margin-bottom: 10px;" :style="{color: mcolor}">¥</text>
+                        <text style="font-size: 72px;" :style="{color: mcolor}">{{item.reduceMoney}}</text>
                     </div>
                     <!--http://img.sanjiang.com/image/20179/26/image1506390688442.png-->
                     <text style="color: #666666;font-size: 24px;">满{{item.orderMoney}}使用</text>
                 </div>
                 <div style="height: 130px;display: flex;flex-direction: column;margin-left: 20px;justify-content: space-around">
                     <div style="display: flex;flex-direction: row;align-items: center;height: 40px;">
-                        <text style="color:#f03838;font-size: 20px;line-height: 20px;text-align: center;border-style:solid;border-width:1px;border-color:#f03838;border-radius: 4px;padding: 5px;">{{item.couponTypeName}}</text>
+                        <text style="font-size: 20px;line-height: 20px;text-align: center;border-style:solid;border-width:1px;border-radius: 4px;padding: 5px;"
+                              :style="{color: mcolor,borderColor:mcolor}"
+                        >{{item.couponTypeName}}</text>
                         <text style="color: #666666;font-size: 24px;margin-left: 12px;">{{item.name}}</text>
                     </div>
 
@@ -88,6 +90,17 @@
                 }
                 else {
                     return "http://img.sanjiang.com/image/20179/21/image1505983813262.png"
+                }
+
+            },
+            mcolor:function () {
+//                if(item.isuserd)
+                if(this.item.used||this.item.expired)
+                {
+                    return "#999999"
+                }
+                else {
+                    return "#f03838"
                 }
 
             }

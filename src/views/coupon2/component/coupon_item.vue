@@ -1,7 +1,7 @@
 <template>
     <div style="display: flex;flex-direction: row;align-items: center">
 
-        <div style="background-color: #afddff" @click="doSelect()">
+        <div style="" @click="doSelect()">
             <YIcon :checked="item.isSelected" type="normal"></YIcon>
         </div>
 

@@ -42,7 +42,7 @@ function api(opt) {
 
 
     opt.token = weex.config.token
-    opt.token = "84d23e89-9702-4e99-a4a8-44d2db9dffeb"
+    opt.token = "e0038f3b-0886-456a-97e9-d058fd1dbe2e"
     // modal.toast({
     //     message: 'opt.token' + opt.token,
     //     duration: 0.8
@@ -55,8 +55,6 @@ function api(opt) {
         url = baseUrl + opt.url;
     }
     console.log(url)
-    console.log(opt.params)
-    console.log(opt.params)
     if (opt.loading != null) {
         if (weex.config.env.platform != 'Web') {
             weex.requireModule('event-module').showLoading();

@@ -57,7 +57,7 @@
 
                     let data2 = basebean.getData();
 
-                    nlib.log.log(data2.list);
+//                    nlib.log.log(data2.list);
 
                     page.list = data2.list;
 

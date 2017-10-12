@@ -4,7 +4,7 @@
  * @description 程序入口启动配置
  */
 
-import App from './views/coupon2/app.vue'
+import App from './views/coupon/app.vue'
 
 import VueProgressBar from 'vue-progressbar'
 

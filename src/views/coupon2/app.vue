@@ -79,6 +79,13 @@
                 }
             });
 
+            api.api({
+                url: 'orders/getQrCode?orderId=889804108993536',
+                success: function (basebean) {
+
+                }
+            });
+
         },
 
         methods: {
@@ -91,9 +98,10 @@
 //                    duration: 0.8
 //                })
 
+                let isSelected = !item.isSelected;
                 api.api({
                     loading:{},
-                    url: 'orders/checkVolume?volumeNumber='+item.volumeNumber,
+                    url: 'orders/checkVolume?volumeNumber='+item.volumeNumber+"&isSelected="+isSelected,
                     success: function (basebean) {
 
                         let data2 = basebean.getData();
